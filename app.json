@@ -24,13 +24,12 @@
             "required": "True"
         },
         "SUDO_USERS": {
-            "description": "",
+            "description": "Add Owner Id",
             "required": "True"
         },
         "DOWNLOAD_DIR": {
             "description": "download/",
-            "required": "False",
-            "value": "download/"
+            "required": "False"
         }
     },
     "stack": "container",
