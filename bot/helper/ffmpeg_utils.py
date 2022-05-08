@@ -32,7 +32,7 @@ def encode(filepath):
     os.remove(filepath)
     return output_filepath, og
 
-def get_thumbnail(filepath):
+def get_thumbnail(in_filename, path, ttl):
     out_filename = os.path.join(path, str(time.time()) + ".jpg")
     open(out_filename, 'a').close()
     try:
