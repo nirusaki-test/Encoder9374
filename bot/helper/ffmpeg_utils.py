@@ -26,16 +26,26 @@ def encode(filepath):
     if "episode_number" in new_name.keys():
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
-    og = joined_string + " [@R136a1Encodes]" + ".mkv"
-    fmd = ffmpeg
+    og = joined_string + " [@Cinema_Dudes]" + ".mkv"
+    fmd = '-map 0 -ss 00:30 -t 30'
     call(['ffmpeg', '-i', filepath] + fmd.split() + [output_filepath])
     os.remove(filepath)
     return output_filepath, og
 
 def get_thumbnail(filepath):
-    outputfilepath='/bot/thumb.jpg/'
-    screenshot_cmd ='-ss 00:30 -frames:v 1 -q:v 2'
-    call(['ffmpeg', '-i', filepath] + screenshot_cmd.split() + [outputfilepath])
+    out_filename = os.path.join(path, str(time.time()) + ".jpg")
+    open(out_filename, 'a').close()
+    try:
+        (
+            'ffmpeg'
+            .input(in_filename, ss=ttl)
+            .output(out_filename, vframes=1)
+            .overwrite_output()
+            .run(capture_stdout=True, capture_stderr=True)
+        )
+        return out_filename
+    except:
+      pass 
   
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
