@@ -27,7 +27,6 @@
             "description": "",
             "required": "True"
         },
-    },
     "stack": "container",
     "formation": {
         "worker": {
