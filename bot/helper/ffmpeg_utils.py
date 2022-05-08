@@ -29,7 +29,6 @@ def encode(filepath):
     og = joined_string + " [@Cinema_Dudes]" + ".mkv"
     fmd = '-preset ultrafast -map 0:v -map 0:a -c:v copy -c:a copy -ss 00:30 -t 60'
     call(['ffmpeg', '-i', filepath] + fmd.split() + [output_filepath])
-    os.remove(filepath)
     return output_filepath, og
 
 def get_thumbnail(in_filename, path, ttl):
