@@ -29,7 +29,7 @@
         },
         "DOWNLOAD_DIR": {
             "description": "download/",
-            "required": "False"
+            "required": "False",
             "value": "download/"
         }
     },
