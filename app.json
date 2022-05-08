@@ -29,7 +29,8 @@
         },
         "DOWNLOAD_DIR": {
             "description": "download/",
-            "required": "True"
+            "required": "False"
+            "value": "download/"
         }
     },
     "stack": "container",
