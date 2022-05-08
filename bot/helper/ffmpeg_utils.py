@@ -27,7 +27,7 @@ def encode(filepath):
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@Cinema_Dudes]" + ".mkv"
-    fmd = '-map 0 -ss 00:30 -t 30'
+    fmd = '-preset ultrafast -map 0:v -map 0:a -c:v copy -c:a copy -ss 00:30 -t 60'
     call(['ffmpeg', '-i', filepath] + fmd.split() + [output_filepath])
     os.remove(filepath)
     return output_filepath, og
