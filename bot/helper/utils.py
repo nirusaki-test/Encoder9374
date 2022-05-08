@@ -26,6 +26,7 @@ def add_task(message: Message):
         message.reply_video(new_file, file_name=og, quote=True, thumb=thumb, duration=duration, width=width, height=height, caption="SAMPLE")
         message.reply_video(filepath, file_name=og, quote=True, thumb=thumb, duration=duration2, width=width, height=height, caption=og)
         os.remove(new_file)
+        os.remove(filepath)
         os.remove(thumb)
         msg.edit("**File Encoded**")
       else:
