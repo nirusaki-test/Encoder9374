@@ -27,6 +27,11 @@
             "description": "",
             "required": "True"
         },
+        "DOWNLOAD_DIR": {
+            "description": "download/",
+            "required": "True"
+        }
+    },
     "stack": "container",
     "formation": {
         "worker": {
