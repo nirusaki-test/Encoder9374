@@ -7,26 +7,27 @@
         "Nice",
         "good"
     ],
-    "repository": "https://github.com/unknown263/video-encoder-bot8364",
-    "website": "https://github.com/unknown263/video-encoder-bot8364",
-    "success_url": "https://github.com/unknown263/video-encoder-bot8364",
+    "repository": "https://github.com/Nirusaki/video-encoder-bot-1",
+    "website": "https://github.com/Nirusaki/video-encoder-bot-1",
+    "success_url": "https://github.com/Nirusaki/video-encoder-bot-1",
     "env": {
         "API_ID": {
-            "description": "Get it by creating an app on https://my.telegram.org",
+            "description": "",
             "required": "True"
         },
         "API_HASH": {
-            "description": "Get it by creating an app on https://my.telegram.org",
+            "description": "",
             "required": "True"
         },
         "BOT_TOKEN": {
-            "description": "after creating a bot in @BotFather you will get some random Letter and number paste it here",
+            "description": "",
             "required": "True"
         },
         "SUDO_USERS": {
-            "description": "put your id if you want others to use it then put their IDs too here",
+            "description": "",
             "required": "True"
-        }
+        },
+    },
     "stack": "container",
     "formation": {
         "worker": {
