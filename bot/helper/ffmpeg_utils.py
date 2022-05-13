@@ -19,7 +19,7 @@ def encode(filepath):
     nam = nam.replace(".mp4", " ")
     nam = nam.replace(".", " ")
     if "/bot/downloads/" in nam:
-      nam = nam.replace("/bot/downloads, "")
+      nam = nam.replace("/bot/downloads", " ")
     new_name = anitopy.parse(nam)
     anime_name = new_name["anime_title"]
     joined_string = f"[{anime_name}]"
