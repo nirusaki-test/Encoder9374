@@ -19,7 +19,7 @@ def add_task(message: Message):
       if new_file:
         msg.edit("**⬆️ Video Encoded Starting To Upload ⬆️**")
         duration = get_duration(new_file)
-        thumb = get_thumbnail(new_file, download_dir, duration / 4)
+        thumb = get_thumbnail(new_file)
         width, height = get_width_height(new_file)
         duration2 = get_duration(filepath)
         msg.edit("**⬆️ Uploading Video ⬆️**")
