@@ -16,11 +16,10 @@ def add_task(message: Message):
       filepath = message.download(file_name=download_dir)
       msg.edit(f"Renaming The File")
       new_file, og = encode(filepath)
-      if new_file:
+      if og:
         msg.edit("**⬆️ Starting To Upload**")
-        duration = get_duration(new_file)
-        thumb = get_thumbnail(new_file)
-        width, height = get_width_height(new_file)
+        thumb = get_thumbnail(filepath)
+        width, height = get_width_height(filepath)
         duration2 = get_duration(filepath)
         msg.edit("**⬆️ Uploading Video ⬆️**")
         app.send_video(video=filepath, chat_id=message.chat.id, supports_streaming=True, file_name=og, thumb=thumb, duration=duration2, width=width, height=height, caption=og)
