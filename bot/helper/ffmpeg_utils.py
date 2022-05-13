@@ -31,7 +31,7 @@ def encode(filepath):
     call(['ffmpeg', '-i', filepath] + fmd.split() + [output_filepath])
     return output_filepath, og
 
-def get_thumbnail(in_filename, path, ttl):
+def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
     cmd = '-map 0:v -ss 00:20 -frames:v 1'
     call(['ffmpeg', '-i', in_filename] + cmd.split() + [out_filename])
