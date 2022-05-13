@@ -36,8 +36,6 @@ def get_thumbnail(in_filename, path, ttl):
     cmd = '-map 0:v -ss 00:20 -frames:v 1'
     call(['ffmpeg', '-i', in_filename] + cmd.split() + [out_filename])
     return out_filename
-    except:
-      pass 
   
 def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
