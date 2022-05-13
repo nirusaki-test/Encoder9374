@@ -29,10 +29,8 @@ def encode(filepath):
     if "episode_number" in new_name.keys():
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
-    og = joined_string + " [@Cinema_Dudes]" + ".mkv"
-    fmd = '-preset ultrafast -map 0:v -map 0:a -c:v copy -c:a copy -ss 00:30 -t 60'
-    call(['ffmpeg', '-i', filepath] + fmd.split() + [output_filepath])
-    return output_filepath, og
+    og = joined_string + " [@ANIXPO]" + ".mkv"
+    return og
 
 def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
