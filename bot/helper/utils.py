@@ -14,10 +14,10 @@ def add_task(message: Message):
     try:
       msg = message.reply_text("⬇️ **Downloading Video** ⬇️", quote=True)
       filepath = message.download(file_name=download_dir)
-      msg.edit(f"**Encoding The Given File\n-->** ```{filepath}```")
+      msg.edit(f"Renaming The File")
       new_file, og = encode(filepath)
       if new_file:
-        msg.edit("**⬆️ Video Encoded Starting To Upload ⬆️**")
+        msg.edit("**⬆️ Starting To Upload**")
         duration = get_duration(new_file)
         thumb = get_thumbnail(new_file)
         width, height = get_width_height(new_file)
@@ -28,7 +28,8 @@ def add_task(message: Message):
         os.remove(new_file)
         os.remove(filepath)
         os.remove(thumb)
-        msg.edit("**File Encoded**")
+        msg.edit("**File Renamed")
+        msg.delete()
       else:
         msg.edit("**Error Contact @NIRUSAKIMARVALE**")
         os.remove(filepath)
