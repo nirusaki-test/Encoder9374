@@ -13,10 +13,13 @@ from subprocess import Popen, PIPE
 def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
-    nam = output_filepath.replace("_", " ")
+    nam = basefilepath.replace("/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", " ")
+    nam = nam.replace("_", " ")
+    nam = nam.replace(".mkv", " ")
+    nam = nam.replace(".mp4", " ")
     nam = nam.replace(".", " ")
-    nam = nam.replace("/bot/downloads/", "")
-    nam = nam + '.mkv'
+    if "/bot/downloads/" in nam:
+      nam = nam.replace("/bot/downloads, "")
     new_name = anitopy.parse(nam)
     anime_name = new_name["anime_title"]
     joined_string = f"[{anime_name}]"
