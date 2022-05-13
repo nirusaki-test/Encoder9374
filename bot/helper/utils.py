@@ -15,7 +15,7 @@ def add_task(message: Message):
       msg = message.reply_text("⬇️ **Downloading Video** ⬇️", quote=True)
       filepath = message.download(file_name=download_dir)
       msg.edit(f"Renaming The File")
-      new_file, og = encode(filepath)
+      og = encode(filepath)
       if og:
         msg.edit("**⬆️ Starting To Upload**")
         thumb = get_thumbnail(filepath)
