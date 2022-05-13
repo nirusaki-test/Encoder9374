@@ -23,7 +23,6 @@ def add_task(message: Message):
         width, height = get_width_height(new_file)
         duration2 = get_duration(filepath)
         msg.edit("**⬆️ Uploading Video ⬆️**")
-        app.send_video(video=new_file, chat_id=message.chat.id, file_name=og, supports_streaming=True, thumb=thumb, duration=duration, width=width, height=height, caption="SAMPLE")
         app.send_video(video=filepath, chat_id=message.chat.id, supports_streaming=True, file_name=og, thumb=thumb, duration=duration2, width=width, height=height, caption=og)
         os.remove(new_file)
         os.remove(filepath)
