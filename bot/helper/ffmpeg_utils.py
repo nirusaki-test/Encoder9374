@@ -32,17 +32,10 @@ def encode(filepath):
     return output_filepath, og
 
 def get_thumbnail(in_filename, path, ttl):
-    out_filename = os.path.join(path, str(time.time()) + ".jpg")
-    open(out_filename, 'a').close()
-    try:
-        (
-            'ffmpeg'
-            .input(in_filename, ss=ttl)
-            .output(out_filename, vframes=1)
-            .overwrite_output()
-            .run(capture_stdout=True, capture_stderr=True)
-        )
-        return out_filename
+    out_filename = 'thumb1.jpg'
+    cmd = '-map 0:v -ss 00:20 -frames:v 1'
+    call(['ffmpeg', '-i', in_filename] + cmd.split() + [out_filename])
+    return out_filename
     except:
       pass 
   
