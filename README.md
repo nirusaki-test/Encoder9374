@@ -24,11 +24,3 @@ pip3 install -r requirements.txt
 With python3.7 or later.
 ```sh
 python3 -m bot
-```
-
-### Credits
-*Thanks to [ShannonScott](https://gist.github.com/ShannonScott) for [transcode_h265.py](https://gist.github.com/ShannonScott/6d807fc59bfa0356eee64fad66f9d9a8)*
-
-### Copyright & License
-- Copyright &copy; 2021 &mdash; [Adnan Ahmad](https://github.com/viperadnan-git)
-- Licensed under the terms of the [GNU General Public License Version 3 &dash; 29 June 2007](./LICENSE)
