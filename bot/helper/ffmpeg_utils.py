@@ -13,7 +13,7 @@ from subprocess import Popen, PIPE
 def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
-    nam = basefilepath.replace("/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", " ")
+    nam = filepath.replace("/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", " ")
     nam = nam.replace("_", " ")
     nam = nam.replace(".mkv", " ")
     nam = nam.replace(".mp4", " ")
@@ -22,16 +22,19 @@ def encode(filepath):
       nam = nam.replace("/bot/downloads", " ")
     new_name = anitopy.parse(nam)
     anime_name = new_name["anime_title"]
-    joined_string = f"[{anime_name}]"
+    joined_string1 = f"[{anime_name}]"
     if "anime_season" in new_name.keys():
       animes_season = new_name["anime_season"]
-      joined_string = f"{joined_string}" + f" [Season {animes_season}]"
+      joined_string = f"{joined_string1}" + f" [Season {animes_season}]"
     if "episode_number" in new_name.keys():
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@ANIXPO]" + ".mkv"
-    strr = og
-    return strr
+    if og:
+      return og
+    else:
+      joined_string1 = joined_string1 + " [@ANIXPO]"
+      return joined_string1
 
 def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
