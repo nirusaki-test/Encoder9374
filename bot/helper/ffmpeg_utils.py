@@ -22,10 +22,10 @@ def encode(filepath):
       nam = nam.replace("/bot/downloads", " ")
     new_name = anitopy.parse(nam)
     anime_name = new_name["anime_title"]
-    joined_string1 = f"[{anime_name}]"
+    joined_string = f"[{anime_name}]"
     if "anime_season" in new_name.keys():
       animes_season = new_name["anime_season"]
-      joined_string = f"{joined_string1}" + f" [Season {animes_season}]"
+      joined_string = f"{joined_string}" + f" [Season {animes_season}]"
     if "episode_number" in new_name.keys():
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
@@ -33,7 +33,7 @@ def encode(filepath):
     if og:
       return og
     else:
-      joined_string1 = joined_string1 + " [@ANIXPO]"
+      joined_string1 = joined_string + " [@ANIXPO]"
       return joined_string1
 
 def get_thumbnail(in_filename):
