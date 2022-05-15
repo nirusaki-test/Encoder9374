@@ -5,17 +5,17 @@ from pyrogram.types import Message
 from pyrogram.errors.exceptions.bad_request_400 import MessageNotModified
 from .ffmpeg_utils import encode, get_thumbnail, get_duration, get_width_height 
 
-def on_task_complete():
+async def on_task_complete():
     del data[0]
     if len(data) > 0:
       add_task(data[0])
 
-def add_task(message: Message):
+async def add_task(message: Message):
     try:
       msg = message.reply_text("⬇️ **Downloading Video** ⬇️", quote=True)
       filepath = message.download(file_name=download_dir)
       msg.edit(f"Renaming The File")
-      new_file, og = encode(filepath)
+      new_file, og = await encode(filepath)
       if new_file:
         msg.edit("**⬆️ Starting To Upload**")
         duration = get_duration(new_file)
@@ -37,4 +37,4 @@ def add_task(message: Message):
       pass
     except Exception as e:
       msg.edit(f"```{e}```")
-    on_task_complete()
+    await on_task_complete()
