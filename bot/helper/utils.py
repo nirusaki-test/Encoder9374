@@ -22,7 +22,7 @@ async def add_task(message: Message):
         width, height = await get_width_height(filepath)
         duration2 = await get_duration(filepath)
         await msg.edit("**⬆️ Uploading Video ⬆️**")
-        await app.send_video(video=filepath, chat_id=message.chat.id, supports_streaming=True, file_name=og, thumb=thumb, duration=duration2, width=width, height=height, caption=og)
+        await app.send_video(video=og, chat_id=message.chat.id, supports_streaming=True, file_name=og, thumb=thumb, duration=duration2, width=width, height=height, caption=og)
         os.remove(filepath)
         os.remove(thumb)
         await msg.edit("**File Renamed")
