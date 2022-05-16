@@ -10,7 +10,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from subprocess import Popen, PIPE
 
-def encode(filepath):
+async def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
     nam = filepath.replace("/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", " ")
@@ -36,20 +36,20 @@ def encode(filepath):
       joined_string1 = joined_string + " [@ANIXPO]"
       return joined_string1
 
-def get_thumbnail(in_filename):
+async def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
     cmd = '-map 0:v -ss 00:20 -frames:v 1'
     call(['ffmpeg', '-i', in_filename] + cmd.split() + [out_filename])
     return out_filename
   
-def get_duration(filepath):
+async def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
     if metadata.has("duration"):
       return metadata.get('duration').seconds
     else:
       return 0
 
-def get_width_height(filepath):
+async def get_width_height(filepath):
     metadata = extractMetadata(createParser(filepath))
     if metadata.has("width") and metadata.has("height"):
       return metadata.get("width"), metadata.get("height")
