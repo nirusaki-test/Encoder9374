@@ -41,7 +41,7 @@ async def encode(filepath):
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@ANIXPO]" + ".mkv"
     ffmpeg = f'ffmpeg "{filepath}" -map 0 -c:s copy -c:v libx265 -b:v 600k -c:a libopus -ab 64k "{og}" -y'
-    await run_subprocess(ffmpeg)
+    process = await run_subprocess(ffmpeg)
     if og:
       return og
     else:
