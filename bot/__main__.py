@@ -26,14 +26,13 @@ def help_message(app, message):
 
 @app.on_message(filters.user(sudo_users) & filters.incoming & (filters.video | filters.document))
 def encode_video(app, message):
-    time.sleep(6)
     if message.document:
       if not message.document.mime_type in video_mimetype:
         message.reply_text("```Invalid Video !\nMake sure its a valid video file.```", quote=True)
         return
     message.reply_text("Added To Rename", quote=True)
     data.append(message)
-    time.sleep(5)
+    time.sleep(2)
     if len(data) == 1:
      add_task(message)
 
