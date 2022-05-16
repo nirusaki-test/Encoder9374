@@ -40,13 +40,9 @@ async def encode(filepath):
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@ANIXPO]" + ".mkv"
-    ffmpeg = f'ffmpeg "{filepath}" -map 0 -c:s copy -c:v libx265 -b:v 600k -c:a libopus -ab 64k "{og}" -y'
+    ffmpeg = f'ffmpeg "{filepath}" -map 0 -c:s copy -c:v libx265 -b:v 600k -c:a libopus -ab 64k "{output_filepath}" -y'
     process = await run_subprocess(ffmpeg)
-    if og:
-      return og
-    else:
-      joined_string1 = joined_string + " [@ANIXPO]"
-      return joined_string1
+    return output_filepath , og
 
 async def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
