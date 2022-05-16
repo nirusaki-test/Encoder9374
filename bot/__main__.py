@@ -32,7 +32,7 @@ def encode_video(app, message):
         return
     message.reply_text("Added To Rename", quote=True)
     data.append(message)
-    time.sleep(2)
+    time.sleep(1)
     if len(data) == 1:
      add_task(message)
 
