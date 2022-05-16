@@ -4,6 +4,7 @@ import sys
 import json
 import anitopy
 import time
+import logging
 from bot import ffmpeg
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
@@ -11,6 +12,12 @@ from hachoir.parser import createParser
 import subprocess
 from subprocess import Popen, PIPE
 
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
+LOGGER = logging.getLogger(__name__)
 
 async def run_subprocess(cmd):
     process = await asyncio.create_subprocess_shell(
@@ -42,6 +49,7 @@ async def encode(filepath):
     og = joined_string + " [@ANIXPO]" + ".mkv"
     ffmpeg = f'ffmpeg "{filepath}" -map 0 -c:s copy -c:v libx265 -b:v 600k -c:a libopus -ab 64k "{output_filepath}" -y'
     process = await run_subprocess(ffmpeg)
+    LOGGER.info(process)
     return output_filepath , og
 
 async def get_thumbnail(in_filename):
