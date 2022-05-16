@@ -8,7 +8,17 @@ from bot import ffmpeg
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
+import subproccess
 from subprocess import Popen, PIPE
+
+
+async def run_subprocess(cmd):
+    process = await asyncio.create_subprocess_shell(
+        cmd,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE
+    )
+    return await process.communicate()
 
 async def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
@@ -30,6 +40,8 @@ async def encode(filepath):
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@ANIXPO]" + ".mkv"
+    ffmpeg = f'ffmpeg "{filepath}" -map 0 -c:s copy -c:v libx265 -b:v 600k -c:a libopus -ab 64k "{og}" -y'
+    await run_subprocess(ffmpeg)
     if og:
       return og
     else:
@@ -39,7 +51,7 @@ async def encode(filepath):
 async def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
     cmd = '-map 0:v -ss 00:20 -frames:v 1'
-    call(['ffmpeg', '-i', in_filename] + cmd.split() + [out_filename])
+    call(['ffmpeg', '-i', in_filename] + cmd.split() + [out_filename]
     return out_filename
   
 async def get_duration(filepath):
