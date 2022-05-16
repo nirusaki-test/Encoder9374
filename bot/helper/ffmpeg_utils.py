@@ -51,7 +51,7 @@ async def encode(filepath):
 async def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
     cmd = '-map 0:v -ss 00:20 -frames:v 1'
-    call(['ffmpeg', '-i', in_filename] + cmd.split() + [out_filename]
+    call(['ffmpeg', '-i', in_filename] + cmd.split() + [out_filename])
     return out_filename
   
 async def get_duration(filepath):
