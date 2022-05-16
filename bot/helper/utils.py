@@ -8,7 +8,7 @@ from .ffmpeg_utils import encode, get_thumbnail, get_duration, get_width_height
 async def on_task_complete():
     del data[0]
     if len(data) > 0:
-      add_task(data[0])
+      await add_task(data[0])
 
 async def add_task(message: Message):
     try:
