@@ -47,10 +47,10 @@ async def encode(filepath):
       episode_no = new_name["episode_number"]
       joined_string = f"{joined_string}" + f" [Episode {episode_no}]"
     og = joined_string + " [@ANIXPO]" + ".mkv"
-    ffmpeg = f'ffmpeg "{filepath}" -map 0 "{output_filepath}" -y'
+    ffmpeg = f'ffmpeg -i "{filepath}" -map 0 "{og}" -y'
     process = await run_subprocess(ffmpeg)
     LOGGER.info(process)
-    return output_filepath , og
+    return og
 
 async def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
