@@ -25,15 +25,15 @@ def help_message(app, message):
     message.reply_text(f"Hi {message.from_user.mention()}\n**•I can Rename Telegram files And Send Sample (Especially Movies,Animes), just send me a video.**\n**•This Bot is Developed by @S136r136a1**\n**•Simple, Easy and Convenient to use**\n**Thanks**")
 
 @app.on_message(filters.user(sudo_users) & filters.incoming & (filters.video | filters.document))
-async def encode_video(app, message):
+def encode_video(app, message):
     if message.document:
       if not message.document.mime_type in video_mimetype:
-        await message.reply_text("```Invalid Video !\nMake sure its a valid video file.```", quote=True)
+        message.reply_text("```Invalid Video !\nMake sure its a valid video file.```", quote=True)
         return
-    await message.reply_text("Added To Rename", quote=True)
+    message.reply_text("Added To Rename", quote=True)
     data.append(message)
-    await asyncio.sleep(1)
     if len(data) == 1:
      add_task(message)
+     time.sleep(1)
 
 app.run()
