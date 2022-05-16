@@ -28,9 +28,9 @@ def help_message(app, message):
 async def encode_video(app, message):
     if message.document:
       if not message.document.mime_type in video_mimetype:
-        message.reply_text("```Invalid Video !\nMake sure its a valid video file.```", quote=True)
+        await message.reply_text("```Invalid Video !\nMake sure its a valid video file.```", quote=True)
         return
-    message.reply_text("Added To Rename", quote=True)
+    await message.reply_text("Added To Rename", quote=True)
     data.append(message)
     await asyncio.sleep(1)
     if len(data) == 1:
