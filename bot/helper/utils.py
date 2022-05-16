@@ -17,7 +17,7 @@ async def add_task(message: Message):
       await msg.edit(f"Renaming The File")
       og = await encode(filepath)
       if og:
-        msg.edit("**⬆️ Starting To Upload**")
+        await msg.edit("**⬆️ Starting To Upload**")
         thumb = await get_thumbnail(filepath)
         width, height = await get_width_height(filepath)
         duration2 = await get_duration(filepath)
@@ -34,4 +34,4 @@ async def add_task(message: Message):
       pass
     except Exception as e:
       await msg.edit(f"```{e}```")
-    on_task_complete()
+    await on_task_complete()
