@@ -2,6 +2,7 @@ from pyrogram import filters
 from bot import app, data, sudo_users
 from bot.helper.utils import add_task
 import asyncio
+import time
 
 video_mimetype = [
   "video/x-flv",
@@ -25,6 +26,7 @@ def help_message(app, message):
 
 @app.on_message(filters.user(sudo_users) & filters.incoming & (filters.video | filters.document))
 def encode_video(app, message):
+    time.sleep(3)
     if message.document:
       if not message.document.mime_type in video_mimetype:
         message.reply_text("```Invalid Video !\nMake sure its a valid video file.```", quote=True)
