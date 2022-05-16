@@ -8,7 +8,7 @@ from bot import ffmpeg
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-import subproccess
+import subprocess
 from subprocess import Popen, PIPE
 
 
