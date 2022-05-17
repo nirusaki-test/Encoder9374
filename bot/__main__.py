@@ -1,5 +1,5 @@
 from pyrogram import filters
-from bot import app, data, sudo_users
+from bot import app, data, sudo_users, LOG_CHANNEL
 from bot.helper.utils import add_task
 from bot.helper.ffmpeg_utils import startup, LOGGER
 import asyncio
