@@ -2,7 +2,7 @@ import pyrogram
 import subprocess
 import traceback
 import asyncio
-from bot import app, MAX_MESSAGE_LENGTH
+from bot import app, MAX_MESSAGE_LENGTH, sudo_users
 
 
 async def exec_message_f(client, message):
