@@ -21,6 +21,12 @@ video_mimetype = [
   "video/mpeg"
   ]
 
+@app.on_message(filters.incoming & filters.command(["cmds", "cmd", "commands"]))
+async def help_message(app, message):
+    if message.chat.id not in sudo_users:
+      return await message.reply_text("You Are Not Authorised To Use This Bot Contact @Nirusaki")
+    await message.reply_text(f"Hi {message.from_user.mention()}\n**•The List Of Commands Are As Follows -:**\n•```/start```**- To Start The Bot\n**•```/cmds```**-To Repeat This List**\n•**Maintained By @FIERCE_TOONS**")
+
 @app.on_message(filters.incoming & filters.command(["start", "help"]))
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
