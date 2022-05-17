@@ -54,6 +54,7 @@ async def encode(filepath):
         LOGGER.info(process)
         return og
     except Exception as er:
+        return er
 
 async def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
