@@ -54,6 +54,13 @@ async def exec_message_f(client, message):
   else:
     return
 
+async def aexec(code, client, message):
+    exec(
+        f"async def __aexec(client, message): "
+        + "".join(f"\n {l}" for l in code.split("\n"))
+    )
+    return await locals()["__aexec"](client, message)
+
 async def eval_message_f(client, message):
     if message.from_user.id in sudo_users:
         status_message = await message.reply_text("Processing ...")
