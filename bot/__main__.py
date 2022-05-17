@@ -1,6 +1,6 @@
 from pyrogram import filters
 from bot import app, data, sudo_users
-from bot.helper.utils import add_task, startup
+from bot.helper.utils import add_task, startup, LOGGER
 import asyncio
 import traceback
 import time
@@ -46,5 +46,5 @@ async def encode_video(app, message):
     if len(data) == 1:
      await add_task(message, a)
      time.sleep(1.8)
-
+app.loop.run_until_complete(startup())
 app.run()
