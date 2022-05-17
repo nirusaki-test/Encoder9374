@@ -12,7 +12,7 @@ async def on_task_complete():
 
 async def add_task(message: Message, a):
     try:
-      a.delete()  
+      await a.delete()  
       msg = await message.reply_text("⬇️ **Downloading Video** ⬇️", quote=True)
       filepath = await message.download(file_name=download_dir)
       await msg.edit(f"Renaming The File")
