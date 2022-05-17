@@ -22,15 +22,15 @@ video_mimetype = [
 
 @app.on_message(filters.user(sudo_users) & filters.command(["start", "help"]))
 async def help_message(app, message):
-    await message.reply_text(f"Hi {message.from_user.mention()}\n**•I can Rename Telegram files And Send Sample (Especially Movies,Animes), just send me a video.**\n**•This Bot is Developed by @S136r136a1**\n**•Simple, Easy and Convenient to use**\n**Thanks**")
+    await message.reply_text(f"Hi {message.from_user.mention()}\n**•I can Encode Telegram files And Send Sample (Especially Movies,Animes), just send me a video.**\n**•This Bot is Developed by @NIRUSAKI_AYEDAEMON**\n**•Simple, Easy and Convenient to use**\n**Thanks**")
 
 @app.on_message(filters.user(sudo_users) & filters.incoming & (filters.video | filters.document))
 async def encode_video(app, message):
     if message.document:
       if not message.document.mime_type in video_mimetype:
-        await message.reply_text("```Invalid Video !\nMake sure its a valid video file.```", quote=True)
+        await message.reply_text("𝓢𝓔𝓓 𝓛𝓨𝓕 𝓦𝓡𝓞𝓝𝓖 𝓕𝓞𝓡𝓜𝓐𝓣", quote=True)
         return
-    await message.reply_text("Added To Rename", quote=True)
+    await message.reply_text("𝓐𝓭𝓭𝓮𝓭 𝓣𝓸 𝓠𝓾𝓮𝓾𝓮 𝓟𝓵𝓮𝓪𝓼𝓮 𝓦𝓪𝓲𝓽 𝓐 𝓦𝓱𝓲𝓵𝓮 𝓤𝓷𝓽𝓲𝓵 𝓔𝓷𝓬𝓸𝓭𝓲𝓷𝓰 𝓢𝓽𝓪𝓻𝓽𝓼", quote=True)
     data.append(message)
     if len(data) == 1:
      await add_task(message)
