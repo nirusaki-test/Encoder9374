@@ -81,5 +81,5 @@ async def get_width_height(filepath):
       return 1280, 720
 
 async def startup():
-    await app.send_message(LOG_CHANNEL, "BOT HAS STARTED"
+    await app.send_message(LOG_CHANNEL, "**BOT HAS STARTED**")
     LOGGER.info("The Bot Has Started")
