@@ -98,6 +98,7 @@ async def sample_gen(app, message):
      await dp.edit("Generating Sample...This May Take Few Moments")
      file_gen_cmd = f'ffmpeg -ss 00:30 -i "{video_file}" -map 0 -c:v copy -c:a copy -t 30 "{output_file}" -y'
      output = await run_subprocess(file_gen_cmd)   
+     LOGGER.info(output)
      duration = await get_duration(output_file)
      output_thumb = 'thumb_output.jpeg'
      thumb_cmd = f'ffmpeg -i {output_file} -ss 00:15 -frames:v 1 -y "{output_thumb}"'
