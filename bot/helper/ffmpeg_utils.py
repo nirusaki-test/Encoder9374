@@ -99,7 +99,6 @@ async def sample_gen(app, message):
      output_thumb = video + 'thumb.jpg'
      thumb_cmd = f'ffmpeg -i {output_file} -map 0:v -ss 00:15 -frames:v 1 -y "{output_thumb}"'
      output = await run_subprocess(thumb_cmd)
-     width, height = get_width_height(output_file)
   else:
      await message.reply_text('NO FILE DETECTED')
   if os.path.exists(output_file):
@@ -111,8 +110,8 @@ async def sample_gen(app, message):
         caption="Sample Generated From 00:30 Of 30 SECONDS",
         supports_streaming=True,
         duration=duration,
-        width=width,
-        height=height,
+        width=1280,
+        height=720,
         file_name=output_file,
         thumb=output_thumb,
         reply_to_message_id=vid
