@@ -82,3 +82,48 @@ async def get_width_height(filepath):
 
 async def startup():
     LOGGER.info("The Bot Has Started")
+
+    
+async def sample_gen(app, message):
+  if message.reply_to_message:
+     vid = message.reply_to_message.id
+     dp = await message.reply_to_message.reply_text("Downloading The Video", parse_mode="markdown")
+     video = await app.download_media(
+        message=message.reply_to_message,
+        file_name='/app/samplevideo.mkv',
+        )
+     await dp.edit("Downloading Finished Starting To Generate Sample")
+     video_file='/app/samplevideo.mkv'
+     output_file='/app/sample_video.mkv'
+     await dp.edit("Generating Sample...This May Take Few Moments")
+     file_gen_cmd = f'ffmpeg -ss 00:30 -i "{video_file}" -map 0 -c:v copy -c:a copy -t 30 "{output_file}" -y'
+     output = await run_subprocess(file_gen_cmd)   
+     duration = await get_duration(output_file)
+     output_thumb = '/app/thumb_output.jpeg'
+     thumb_cmd = f'ffmpeg -i {output_file} -ss 00:15 -frames:v 1 "{output_thumb}" -y'
+     output = await run_subprocess(thumb_cmd)
+     width, height = get_width_height(output_file)
+  else:
+     await message.reply_text('NO FILE DETECTED')
+  if os.path.exists(output_file):
+     await dp.edit('Uploading The Video')
+     chat_id = message.chat.id
+     upload = await app.send_video(
+        chat_id=message.chat.id,
+        video=output_file,
+        caption="Sample Generated From 00:30 Of 30 SECONDS",
+        supports_streaming=True,
+        duration=duration,
+        width=width,
+        height=height,
+        file_name=output_file,
+        thumb=output_thumb,
+        reply_to_message_id=vid
+     )
+     await dp.delete()
+     os.remove(video_file)
+     os.remove(output_file)
+     os.remove(output_thumb)
+  else:
+     await dp.edit("Failed To Generate Sample Due To Locked Infrastructure")
+     os.remove(video_file)    
