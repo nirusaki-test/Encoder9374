@@ -117,7 +117,7 @@ async def sample_gen(app, message):
         reply_to_message_id=vid
      )
      await dp.delete()
-     os.remove(video_file)
+     os.remove(video)
      os.remove(output_file)
      os.remove(output_thumb)
   else:
