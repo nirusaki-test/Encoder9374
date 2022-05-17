@@ -57,7 +57,7 @@ async def eval_message_f(client, message):
         status_message = await message.reply_text("Processing ...")
         cmd = message.text.split(" ", maxsplit=1)[1]
 
-        reply_to_id = message.message_id
+        reply_to_id = message.id
         if message.reply_to_message:
             reply_to_id = message.reply_to_message.id
 
