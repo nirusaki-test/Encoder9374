@@ -1,6 +1,7 @@
 from pyrogram import filters
 from bot import app, data, sudo_users, LOG_CHANNEL
 from bot.helper.utils import add_task
+from bot.helper.devtools import exec_message_f
 from bot.helper.ffmpeg_utils import startup, LOGGER
 import asyncio
 import traceback
@@ -48,6 +49,14 @@ async def encode_video(app, message):
      a.delete()
      await add_task(message)
      time.sleep(1.8)
+    
+@app.on_message(filters.incoming & filters.command(["execute", "exec", "bash"]))
+async def help_message(app, message):
+    if message.chat.id not in sudo_users:
+      return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
+    await exec_message_f
+    
+    
 ##Run App
 app.loop.run_until_complete(startup())
 app.run()
