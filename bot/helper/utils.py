@@ -15,7 +15,7 @@ async def add_task(message: Message, a):
       await a.delete()  
       msg = await message.reply_text("⬇️ **Downloading Video** ⬇️", quote=True)
       filepath = await message.download(file_name=download_dir)
-      await msg.edit(f"Renaming The File")
+      await msg.edit(f"**Encoding The File**")
       og = await encode(filepath)
       if og:
         await msg.edit("**⬆️ Starting To Upload**")
@@ -26,7 +26,7 @@ async def add_task(message: Message, a):
         await app.send_video(video=og, chat_id=message.chat.id, supports_streaming=True, file_name=og, thumb=thumb, duration=duration2, width=width, height=height, caption=og)
         os.remove(filepath)
         os.remove(thumb)
-        await msg.edit("**File Renamed")
+        await msg.edit("**File Encoded**")
         await msg.delete()
       else:
         await msg.edit("**Error Contact @NIRUSAKIMARVALE**")
