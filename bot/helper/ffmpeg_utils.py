@@ -58,9 +58,13 @@ async def encode(filepath):
 
 async def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
-    cmd = '-map 0:v -ss 00:20 -frames:v 1'
-    call(['ffmpeg', '-i', in_filename] + cmd.split() + [out_filename])
-    return out_filename
+    outfile = 'thumb.jpg'
+    try:
+        code = f'ffmpeg -i "{in_filename}" -map 0:v -ss 00:20 -frames:v 1 "{out_filename}" -y'
+        process = await run_subprocess(code)
+        return out_filename
+    except Exception as er:
+        return outfile
   
 async def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
