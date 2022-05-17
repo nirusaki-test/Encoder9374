@@ -87,7 +87,7 @@ async def startup():
 async def sample_gen(app, message):
   if message.reply_to_message:
      vid = message.reply_to_message.id
-     dp = await message.reply_to_message.reply_text("Downloading The Video", parse_mode="markdown")
+     dp = await message.reply_to_message.reply_text("Downloading The Video")
      video = await app.download_media(
         message=message.reply_to_message,
         file_name='/app/samplevideo.mkv',
