@@ -54,7 +54,7 @@ async def encode_video(app, message):
 async def help_message(app, message):
     if message.chat.id not in sudo_users:
       return await message.reply_text("**You Are Not Authorised To Use This Bot Contact @Nirusaki**")    
-    await exec_message_f
+    await exec_message_f(app, message)
     
     
 ##Run App
