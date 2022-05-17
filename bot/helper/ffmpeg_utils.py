@@ -100,7 +100,7 @@ async def sample_gen(app, message):
      output = await run_subprocess(file_gen_cmd)   
      duration = await get_duration(output_file)
      output_thumb = 'thumb_output.jpeg'
-     thumb_cmd = f'ffmpeg -i {output_file} -ss 00:15 -frames:v 1 "{output_thumb}" -y'
+     thumb_cmd = f'ffmpeg -i {output_file} -ss 00:15 -frames:v 1 -y "{output_thumb}"'
      output = await run_subprocess(thumb_cmd)
      width, height = get_width_height(output_file)
   else:
