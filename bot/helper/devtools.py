@@ -59,7 +59,7 @@ async def eval_message_f(client, message):
 
         reply_to_id = message.message_id
         if message.reply_to_message:
-            reply_to_id = message.reply_to_message.message_id
+            reply_to_id = message.reply_to_message.id
 
         old_stderr = sys.stderr
         old_stdout = sys.stdout
