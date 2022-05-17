@@ -2,6 +2,7 @@ import pyrogram
 import subprocess
 import traceback
 import sys
+import io
 import asyncio
 import time
 from bot import app, MAX_MESSAGE_LENGTH, sudo_users
