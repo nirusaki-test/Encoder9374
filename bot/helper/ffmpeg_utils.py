@@ -79,3 +79,7 @@ async def get_width_height(filepath):
       return metadata.get("width"), metadata.get("height")
     else:
       return 1280, 720
+
+async def startup():
+    await app.send_message(LOG_CHANNEL, "BOT HAS STARTED"
+    LOGGER.info("The Bot Has Started")
