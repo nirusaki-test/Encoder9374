@@ -1,6 +1,7 @@
 from pyrogram import filters
 from bot import app, data, sudo_users
-from bot.helper.utils import add_task, startup, LOGGER
+from bot.helper.utils import add_task
+from bot.helper.ffmpeg_utils import startup, LOGGER
 import asyncio
 import traceback
 import time
