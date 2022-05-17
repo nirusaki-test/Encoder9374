@@ -29,3 +29,4 @@ jobs:
           API_HASH: ${{ secrets.API_HASH }} 
           SUDO_USERS: ${{ secrets.SUDO_USERS }}
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          LOG_CHANNEL: ${{ secrets.LOG_CHANNEL }}
