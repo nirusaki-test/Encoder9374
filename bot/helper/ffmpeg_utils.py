@@ -90,7 +90,7 @@ async def sample_gen(app, message):
      dp = await message.reply_to_message.reply_text("Downloading The Video")
      video = await app.download_media(
         message=message.reply_to_message,
-        file_name='/app/samplevideo.mkv',
+        file_name='samplevideo.mkv',
         )
      await dp.edit("Downloading Finished Starting To Generate Sample")
      video_file='samplevideo.mkv'
