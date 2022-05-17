@@ -53,7 +53,7 @@ async def exec_message_f(client, message):
     return
 
 async def eval_message_f(client, message):
-    if message.from_user.id in AUTH_USERS:
+    if message.from_user.id in sudo_users:
         status_message = await message.reply_text("Processing ...")
         cmd = message.text.split(" ", maxsplit=1)[1]
 
