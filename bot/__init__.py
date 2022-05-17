@@ -3,6 +3,9 @@ import asyncio
 from pyrogram import Client
 from dotenv import load_dotenv
 
+THUMB = "https://te.legra.ph/file/2ebf402cdef8c27ab4648.jpg"
+os.system(f"wget {THUMB} -O thumb.jpg")
+
 api_id = int(os.environ.get("API_ID"))
 api_hash = os.environ.get("API_HASH")
 bot_token = os.environ.get("BOT_TOKEN")
