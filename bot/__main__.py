@@ -35,10 +35,10 @@ async def encode_video(app, message):
       if not message.document.mime_type in video_mimetype:
         await message.reply_text("**Send Any Video File**", quote=True)
         return
-    await message.reply_text("Added To Queue Please Wait...", quote=True)
+    a = await message.reply_text("Added To Queue Please Wait...", quote=True)
     data.append(message)
     if len(data) == 1:
-     await add_task(message)
+     await add_task(message, a)
      time.sleep(1.8)
 
 app.run()
