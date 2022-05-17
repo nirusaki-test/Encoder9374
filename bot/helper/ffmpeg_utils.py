@@ -60,7 +60,7 @@ async def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
     outfile = 'thumb.jpg'
     try:
-        code = f'ffmpeg -i "{in_filename}" -map 0:v -ss 00:20 -frames:v 1 "{out_filename}" -y'
+        code = f'ffmpeg -hide_banner -loglevel error -i "{in_filename}" -map 0:v -ss 00:20 -frames:v 1 "{out_filename}" -y'
         process = await run_subprocess(code)
         return out_filename
     except Exception as er:
