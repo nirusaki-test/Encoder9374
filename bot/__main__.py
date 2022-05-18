@@ -47,7 +47,7 @@ async def encode_video(app, message):
     a = await message.reply_text("**Added To Queue Please Wait...**", quote=True)
     data.append(message)
     if len(data) == 1:
-     a.delete()
+     await a.delete()
      await add_task(message)
      time.sleep(1.8)
     
