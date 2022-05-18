@@ -28,7 +28,7 @@ async def run_subprocess(cmd):
     )
     return await process.communicate()
 
-async def encode(filepath, msgid, message_reply):
+async def encode(filepath, msgchatid, message_reply):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
     nam = filepath.replace("/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", " ")
@@ -54,7 +54,7 @@ async def encode(filepath, msgid, message_reply):
         process = await run_subprocess(ffmpeg)
         return og
     except Exception as er:
-        return await app.send_message(f"Error {er}")
+        return await app.send_message(chat_id=msgchatid, text=f"Error\n **{er}** CONTACT __@NIRUSAKI__", reply_to_message_id=message_reply)
 
 async def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
