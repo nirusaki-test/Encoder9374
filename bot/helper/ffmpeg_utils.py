@@ -64,7 +64,7 @@ async def get_thumbnail(in_filename):
         process = await run_subprocess(code)
         return out_filename
     except Exception as er:
-        return outfile
+        return LOGGER.info(er)
   
 async def get_duration(filepath):
     metadata = extractMetadata(createParser(filepath))
