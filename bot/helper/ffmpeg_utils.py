@@ -53,7 +53,9 @@ async def encode(filepath, msgchatid, message_reply):
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     try:
         ffmpeg = f'ffmpeg -i "{filepath}" {ffmpeg[0]} -y "{og}"'
+        LOGGER.info(ffmpeg)
         process = await run_subprocess(ffmpeg)
+        LOGGER.info(process)
         return og
     except Exception as er:
         return er
