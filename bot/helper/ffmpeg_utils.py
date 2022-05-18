@@ -52,7 +52,7 @@ async def encode(filepath, msgchatid, message_reply):
     og = joined_string + " [@ANIXPO]" + ".mkv"
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     try:
-        ffmpeg = f'ffmpeg -i "{filepath}" """{ffmpeg[0]}""" -y "{og}"'
+        ffmpeg = f'ffmpeg -i "{filepath}" {ffmpeg[0]} -y "{og}"'
         process = await run_subprocess(ffmpeg)
         return og
     except Exception as er:
