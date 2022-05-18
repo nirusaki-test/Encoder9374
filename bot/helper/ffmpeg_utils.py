@@ -28,7 +28,7 @@ async def run_subprocess(cmd):
     )
     return await process.communicate()
 
-async def encode(filepath, message):
+async def encode(filepath, msgid, message_reply):
     basefilepath, extension = os.path.splitext(filepath)
     output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
     nam = filepath.replace("/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", " ")
