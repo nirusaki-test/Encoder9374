@@ -5,7 +5,7 @@ import sys
 import io
 import asyncio
 import time
-from bot import app, MAX_MESSAGE_LENGTH, sudo_users
+from bot import app, MAX_MESSAGE_LENGTH, sudo_users, ffmpeg, data
 
 
 async def exec_message_f(client, message):
