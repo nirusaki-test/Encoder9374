@@ -49,12 +49,11 @@ async def encode(filepath):
     og = joined_string + " [@ANIXPO]" + ".mkv"
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     try:
-        ffmpeg = f'ffmpeg -i "{filepath}" -map 0 -y "{og}"'
+        ffmpeg = f'ffmpeg -i "{filepath}" {ffmpeg} -y "{og}"'
         process = await run_subprocess(ffmpeg)
-        LOGGER.info(process)
         return og
     except Exception as er:
-        return er
+        return await app.send_message(f"Error {er}")
 
 async def get_thumbnail(in_filename):
     out_filename = 'thumb1.jpg'
