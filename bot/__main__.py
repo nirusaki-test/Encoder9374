@@ -1,6 +1,6 @@
 from pyrogram import filters
 from bot import app, data, sudo_users, LOG_CHANNEL
-frombot.helper.functions import change_ffmpeg
+from bot.helper.function import change_ffmpeg
 from bot.helper.utils import add_task
 from bot.helper.devtools import exec_message_f , eval_message_f
 from bot.helper.ffmpeg_utils import startup, LOGGER, sample_gen
