@@ -5,7 +5,9 @@ from dotenv import load_dotenv
 
 THUMB = "https://te.legra.ph/file/2ebf402cdef8c27ab4648.jpg"
 os.system(f"wget {THUMB} -O thumb.jpg")
-ffmpeg = []
+ffmpegc = []
+ffmpegc.append("-i 'https://te.legra.ph/file/e9408e71281cdcb017874.png' -map 0 -filter_complex 'overlay =main_w-(overlay_w+10):main_h-(overlay_h+10)'  -c:v libx265 -crf 29 -c:s copy -s 854x480 -preset faster -metadata title='Visit For More Movies [t.me/AniXpo]'  -metadata:s:v title='Visit Website[Anixpo] t.me/AniXpo] - 480p - HEVC - 8bit'  -metadata:s:a title='[Visit t.me/AniXpo] - Opus - 60 kbps' -metadata:s:s title='[AniXpo Substations Alpha]' -c:a libopus -ab 60k")
+
 api_id = int(os.environ.get("API_ID"))
 api_hash = os.environ.get("API_HASH")
 bot_token = os.environ.get("BOT_TOKEN")
