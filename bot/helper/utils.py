@@ -12,10 +12,12 @@ async def on_task_complete():
 
 async def add_task(message: Message):
     try:  
+      msg_id = message.id
       msg = await message.reply_text("⬇️ **Downloading Video** ⬇️", quote=True)
+      msgchatid = message.chat.id 
       filepath = await message.download(file_name=download_dir)
       await msg.edit(f"**Encoding The File**")
-      og = await encode(filepath)
+      og = await encode(filepath, msgchatid, msg_id)
       if og:
         await msg.edit("**⬆️ Starting To Upload**")
         thumb = await get_thumbnail(og)
