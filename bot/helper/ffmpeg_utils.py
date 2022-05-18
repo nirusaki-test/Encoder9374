@@ -6,7 +6,7 @@ import json
 import anitopy
 import time
 import logging
-from bot import ffmpeg, app, LOG_CHANNEL
+from bot import ffmpegc, app, LOG_CHANNEL
 from subprocess import call, check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
@@ -31,6 +31,7 @@ async def run_subprocess(cmd):
 
 async def encode(filepath):
     basefilepath, extension = os.path.splitext(filepath)
+    ffmpegp = str(ffmpegc[0])
     output_filepath = basefilepath + "R136A1_Encodes" + ".mkv"
     nam = filepath.replace("/home/runner/work/Auto-Renamer-Queue/Auto-Renamer-Queue/downloads/", " ")
     nam = nam.replace("_", " ")
@@ -51,9 +52,9 @@ async def encode(filepath):
     og = joined_string + " [@ANIXPO]" + ".mkv"
     og = og.replace("/home/runner/work/Encoder/Encoder/downloads/", "")
     try:
-        ffmpeg = f'ffmpeg -i "{filepath}" {ffmpeg[0]} -y "{og}"'
+        ffmpeg_cmd = f'ffmpeg -i "{filepath}" {ffmpegp} -y "{og}"'
         LOGGER.info(ffmpeg)
-        process = await run_subprocess(ffmpeg)
+        process = await run_subprocess(ffmpeg_cmd)
         LOGGER.info(process)
         return og
     except Exception as er:
